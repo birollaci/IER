@@ -1,0 +1,6 @@
+MAS airport {
+	
+	environment: AirportEnv
+	
+	agents: passanger; ticketController; metalDetector; packageController; exitDoor;
+}

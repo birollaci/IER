@@ -1,0 +1,42 @@
+import jason.environment.grid.Location;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.logging.Logger;
+
+// Window for executing commands
+public class InteractionWindow {
+	static Logger logger = Logger.getLogger(AirportEnv.class.getName());
+	
+    private AirportEnv enviroment;
+	private AirportModel airportModel;
+
+    InteractionWindow(AirportEnv env){
+        enviroment = env;
+
+        JFrame frame=new JFrame();
+        // request buttons
+        JButton requestBread=new JButton("Start");
+        requestBread.setBounds(0,0,150, 80);
+        requestBread.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+				enviroment.addPercept(enviroment.start());
+				logger.info("start button pushed!");
+            }
+        });
+        frame.add(requestBread);
+
+        // Setting Frame size. This is the window size
+        frame.setSize(340,310);
+
+        frame.setLayout(null);
+        frame.setVisible(true);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
+
+}
